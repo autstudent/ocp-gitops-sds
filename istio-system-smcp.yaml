@@ -7,9 +7,7 @@ spec:
   general:
     logging:
       componentLevels: 
-          secret: info
-          config: info
-          default: info
+          default: debug
   addons:
     grafana:
       enabled: true
