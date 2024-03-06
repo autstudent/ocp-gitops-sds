@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: after
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: check-sds
+        image: registry.redhat.io/openshift4/ose-cli:latest
+        command:
+          - /bin/bash
+          - -c
+          - |
+            echo "Starting SDS Installation cert"
+            
+      restartPolicy: Never
+  backoffLimit: 0
