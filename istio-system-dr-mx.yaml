@@ -5,6 +5,9 @@ metadata:
   namespace: egress-mx
 spec:
   host: my-nginx-mx.user1-mesh-external.svc.cluster.local
+  workloadSelector:
+    matchLabels:
+      app: egress-mx
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
