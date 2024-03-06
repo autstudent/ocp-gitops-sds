@@ -4,7 +4,7 @@ metadata:
   name: originate-mtls-for-nginx-user1
   namespace: egress-es
 spec:
-  host: my-nginx.user1-mesh-external.svc.cluster.local
+  host: my-nginx-es.user1-mesh-external.svc.cluster.local
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
@@ -14,4 +14,4 @@ spec:
       tls:
         credentialName: user1-mesh-external-egress-nginx-client-certs
         mode: MUTUAL
-        sni: my-nginx.user1-mesh-external.svc.cluster.local
+        sni: my-nginx-es.user1-mesh-external.svc.cluster.local
