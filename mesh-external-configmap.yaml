@@ -26,8 +26,5 @@ data:
     }
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-03-05T16:29:12Z"
   name: nginx-configmap
   namespace: user1-mesh-external
-  resourceVersion: "87653"
-  uid: 468fa628-7984-410e-8030-2b1a12766b1a

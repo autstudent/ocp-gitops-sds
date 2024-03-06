@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-nginx-es
-  namespace: user1-mesh-external-es
+  namespace: user1-mesh-external
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
