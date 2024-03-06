@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: originate-mtls-for-nginx-user2
+  namespace: istio-system
+spec:
+  host: my-nginx.user2-mesh-external.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+    portLevelSettings:
+    - port:
+        number: 443
+      tls:
+        credentialName: user2-mesh-external-egress-nginx-client-certs
+        mode: MUTUAL
+        sni: my-nginx.user2-mesh-external.svc.cluster.local

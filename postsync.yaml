@@ -16,7 +16,19 @@ spec:
           - -c
           - |
             echo "Starting SDS Installation cert"
+
             sleep 300
+
+            POD_ISTIOD=$(oc get po -l app=istiod -o jsonpath='{.items[0].metadata.name}' -n istio-system)
+            oc logs $POD_ISTIOD -n istio-system | grep "Push debounce" | grep "for config Secret/istio-system/user1-mesh-external-egress-nginx-client-certs"
+            oc logs $POD_ISTIOD -n istio-system | grep "Push debounce" | grep "SDS: PUSH request for node:istio-egressgateway" | grep "cached:1/1 filtered:1"
+
+            POD_EGRESS=$(oc get po -l app=istio-egressgateway -o jsonpath='{.items[0].metadata.name}' -n istio-system)
+            oc logs $POD_EGRESS -n istio-system | grep "SDS: PUSH request for node:istio-egressgateway" | grep "resource:default"
+            oc logs $POD_EGRESS -n istio-system | grep "SDS: PUSH request for node:istio-egressgateway" | grep "resource:ROOTCA"
+
+
             echo "Finished"
+
       restartPolicy: Never
   backoffLimit: 0
