@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: direct-nginx-through-egress-gateway-es
+  namespace: user1
+spec:
+  gateways:
+  - egress-es
+  - mesh
+  hosts:
+  - my-nginx-es.user1-mesh-external.svc.cluster.local
+  http:
+  - match:
+    - gateways:
+      - mesh
+      port: 443
+    route:
+    - destination:
+        host: egress-es.egress-es.svc.cluster.local
+        port:
+          number: 443
+        subset: nginx
+      weight: 100
+  - match:
+    - gateways:
+      - egress-es
+      port: 443
+    route:
+    - destination:
+        host: my-nginx-es.user1-mesh-external.svc.cluster.local
+        port:
+          number: 443
+      weight: 100

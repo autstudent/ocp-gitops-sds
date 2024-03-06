@@ -1,14 +1,14 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: istio-egressgateway
+  name: egress-mx
   namespace: user1
 spec:
   selector:
-    app: istio-egressgateway
+    app: egress-mx
   servers:
   - hosts:
-    - my-nginx.user1-mesh-external.svc.cluster.local
+    - my-nginx-mx.user1-mesh-external.svc.cluster.local
     port:
       name: https
       number: 443

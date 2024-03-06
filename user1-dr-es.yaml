@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: egressgateway-for-nginx-es
+  namespace: user1
+spec:
+  host: egress-es.egress-es.svc.cluster.local
+  subsets:
+  - name: nginx
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN
+      portLevelSettings:
+      - port:
+          number: 443
+        tls:
+          mode: ISTIO_MUTUAL
+          sni: my-nginx-es.user1-mesh-external.svc.cluster.local
