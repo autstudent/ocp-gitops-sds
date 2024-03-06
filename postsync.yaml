@@ -16,6 +16,7 @@ spec:
           - -c
           - |
             echo "Starting SDS Installation cert"
-            
+            sleep 300
+            echo "Finished"
       restartPolicy: Never
   backoffLimit: 0

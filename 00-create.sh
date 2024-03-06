@@ -1,3 +1,5 @@
+oc label namespace istio-system argocd.argoproj.io/managed-by=openshift-gitops --overwrite
+
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=example Inc./CN=example.com' -keyout example.com.key -out example.com.crt
 openssl req -out my-nginx.user1-mesh-external.svc.cluster.local.csr -newkey rsa:2048 -nodes -keyout my-nginx.user1-mesh-external.svc.cluster.local.key -subj "/CN=my-nginx.user1-mesh-external.svc.cluster.local/O=some organization"
 openssl x509 -req -days 365 -CA example.com.crt -CAkey example.com.key -set_serial 0 -in my-nginx.user1-mesh-external.svc.cluster.local.csr -out my-nginx.user1-mesh-external.svc.cluster.local.crt
@@ -23,7 +25,9 @@ oc project user1-mesh-external
 POD=$(oc get po -l run=my-nginx -o jsonpath='{.items[0].metadata.name}')
 oc rsh $POD curl localhost:443 -k -v
 
+oc new-project user1
 oc project user1
+oc label namespace user1 argocd.argoproj.io/managed-by=openshift-gitops --overwrite
 oc create -n user1 secret tls nginx-client-certs --key client.example.com.key --cert client.example.com.crt
 
 oc create -n user1 secret generic nginx-ca-certs --from-file=example.com.crt
