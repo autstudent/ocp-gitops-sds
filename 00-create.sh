@@ -5,6 +5,8 @@ oc apply -f istio-system-smmr.yaml
 oc apply -f istio-system-smcp.yaml
 
 oc label namespace istio-system argocd.argoproj.io/managed-by=openshift-gitops --overwrite
+oc label namespace egress-mx argocd.argoproj.io/managed-by=openshift-gitops --overwrite
+oc label namespace egress-es argocd.argoproj.io/managed-by=openshift-gitops --overwrite
 
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=example Inc./CN=example.com' -keyout example.com.key -out example.com.crt
 openssl req -out my-nginx.user1-mesh-external.svc.cluster.local.csr -newkey rsa:2048 -nodes -keyout my-nginx.user1-mesh-external.svc.cluster.local.key -subj "/CN=my-nginx.user1-mesh-external.svc.cluster.local/O=some organization"

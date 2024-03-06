@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: originate-mtls-for-nginx-user1
-  namespace: istio-system
+  namespace: egress-mx
 spec:
   host: my-nginx.user1-mesh-external.svc.cluster.local
   trafficPolicy:
