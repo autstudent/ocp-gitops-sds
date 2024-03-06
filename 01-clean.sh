@@ -5,3 +5,7 @@ oc delete secret -n istio-system user1-mesh-external-egress-nginx-client-certs
 oc delete dr -n istio-system  originate-mtls-for-nginx-user1
 oc delete secret -n istio-system user2-mesh-external-egress-nginx-client-certs
 oc delete dr -n istio-system  originate-mtls-for-nginx-user2
+oc delete secret -n egress-es user1-mesh-external-egress-nginx-client-certs-es
+oc delete dr -n egress-es  originate-mtls-for-nginx-user1-es
+oc delete secret -n egress-mx user1-mesh-external-egress-nginx-client-certs-mx
+oc delete dr -n egress-mx originate-mtls-for-nginx-user1-mx

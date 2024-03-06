@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  name: originate-mtls-for-nginx-user1
+  name: originate-mtls-for-nginx-user1-es
   namespace: egress-es
 spec:
   host: my-nginx-es.user1-mesh-external.svc.cluster.local
@@ -12,6 +12,6 @@ spec:
     - port:
         number: 443
       tls:
-        credentialName: user1-mesh-external-egress-nginx-client-certs
+        credentialName: user1-mesh-external-egress-nginx-client-certs-es
         mode: MUTUAL
         sni: my-nginx-es.user1-mesh-external.svc.cluster.local
