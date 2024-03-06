@@ -9,6 +9,7 @@ spec:
       componentLevels: 
           secret: info
           config: info
+          default: info
   addons:
     grafana:
       enabled: true
