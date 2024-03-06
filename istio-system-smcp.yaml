@@ -4,6 +4,11 @@ metadata:
   name: basic
   namespace: istio-system
 spec:
+  general:
+    logging:
+      componentLevels: {}
+          secret: info
+          config: info
   addons:
     grafana:
       enabled: true
