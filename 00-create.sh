@@ -1,3 +1,9 @@
+oc new-project istio-system
+oc new-project egress-mx
+oc new-project egress-es
+oc apply -f istio-system-smmr.yaml
+oc apply -f istio-system-smcp.yaml
+
 oc label namespace istio-system argocd.argoproj.io/managed-by=openshift-gitops --overwrite
 
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=example Inc./CN=example.com' -keyout example.com.key -out example.com.crt
