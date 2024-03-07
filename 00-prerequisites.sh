@@ -12,6 +12,9 @@ oc label namespace egress-es argocd.argoproj.io/managed-by=openshift-gitops --ov
 oc new-project user1-mesh-external
 oc label namespace user1-mesh-external argocd.argoproj.io/managed-by=openshift-gitops --overwrite
 
+oc new-project user2-mesh-external
+oc label namespace user2-mesh-external argocd.argoproj.io/managed-by=openshift-gitops --overwrite
+
 oc adm policy add-scc-to-user anyuid -z nginx -n user1-mesh-external
 oc adm policy add-scc-to-user anyuid -z nginx-es -n user1-mesh-external
 oc adm policy add-scc-to-user anyuid -z nginx-mx -n user1-mesh-external
