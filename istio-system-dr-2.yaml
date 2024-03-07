@@ -7,7 +7,7 @@ spec:
   host: my-nginx.user2-mesh-external.svc.cluster.local
   workloadSelector:
     matchLabels:
-      app: istio-egressgateways
+      app: istio-egressgateway
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
