@@ -18,3 +18,4 @@ spec:
         credentialName: user1-mesh-external-egress-nginx-client-certs-mx
         mode: MUTUAL
         sni: my-nginx-mx.user1-mesh-external.svc.cluster.local
+        insecureSkipVerify: true
