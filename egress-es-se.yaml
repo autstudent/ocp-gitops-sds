@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  namespace: egress-es
+  name: nginx-user1
+spec:
+  hosts:
+  - my-nginx-es.user1-mesh-external.svc.cluster.local
+  ports:
+  - number: 80
+    name: http
+    protocol: HTTP
+  - number: 443
+    name: https
+    protocol: HTTPS
+  resolution: DNS
+  endpoints:
+  - address: my-nginx-es.user1-mesh-external.svc.cluster.local
+    ports:
+      https: 443
